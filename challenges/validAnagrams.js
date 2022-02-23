@@ -14,25 +14,23 @@ const validAnagrams = (str1, str2) => {
   if (str1.length !== str2.length) return false;
 
   const firstStringCounter = {};
-  const secondStringCounter = {};
   for (let char of str1) {
     firstStringCounter[char] = (firstStringCounter[char] || 0) + 1;
   }
-  for (let char of str2) {
-    secondStringCounter[char] = (secondStringCounter[char] || 0) + 1;
-  }
 
-  for (key in firstStringCounter) {
-    if (firstStringCounter[key] !== secondStringCounter[key]) {
+  for (let char of str2) {
+    if (!firstStringCounter[char]) {
       return false;
+    } else {
+      firstStringCounter[char] -= 1;
     }
   }
 
   return true;
 };
 
-// string1 = "asa";
-// string2 = "sai";
+string1 = "qqerty";
+string2 = "ytreqq";
 
-// const result = validAnagrams(string1, string2);
-// console.log(result);
+const result = validAnagrams(string1, string2);
+console.log(result);
